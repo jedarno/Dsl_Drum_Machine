@@ -1,0 +1,122 @@
+-setBpm
+_n |> __int32(_)
+---
+setBpm(_n), _sig -> __user(bpm, _n), _sig
+
+-setBpmResolve
+_E, _sig -> _I, _sigP
+---
+setBpm(_E), _sig -> setBpm(_I), _sigP
+
+-drumVolume
+_n |> __int32(_)
+---
+drumVolume(_drum, _n), _sig -> __user(drumVolume, _drum, _n), _sig
+
+-drumVolumeResolve
+_E, _sig -> _I, _sigP
+---
+drumVolume(_drum, _E), _sig -> drumVolume(_drum, _I), _sigP
+
+-drumDuration
+_n |> __int32(_)
+---
+drumDuration(_drum, _n), _sig -> __user(drumDuration, _n), _sig
+
+-drumDurationResolve
+_E, _sig -> _I, _sigP
+---
+drumDuration(_drum, _E), _sig -> drumDuration(_drum, _I), _sigP
+
+-MakeTrack
+_title |> __string(_)
+---
+makeTrack(_name, _title), _sig -> __user(track, _name, _title), __put(_sig, _name, _title) 
+
+-MakeTrackResolveTitle
+_E, _sig -> _s, _sigP
+---
+makeTrack(_name, _E), _sig -> makeTrack(_name, _s), _sigP
+
+-setSoundSnare
+_track |>__string(_) _pos |> __int32(_) _sound |> snare
+---
+setSound(_track, _pos ,_sound), _sig -> __user(setSound, _track, _pos, _sound), _sig
+
+-setSoundBass
+_track |>__string(_) _pos |> __int32(_) _sound |> bass
+---
+setSound(_track, _pos ,_sound), _sig -> __user(setSound, _track, _pos, _sound), _sig
+
+-setSoundTom1
+_track |>__string(_) _pos |> __int32(_) _sound |> tom1
+---
+setSound(_track, _pos ,_sound), _sig -> __user(setSound, _track, _pos, _sound), _sig
+
+-setSoundTom2
+_track |>__string(_) _pos |> __int32(_) _sound |> tom2
+---
+setSound(_track, _pos ,_sound), _sig -> __user(setSound, _track, _pos, _sound), _sig
+
+-setSoundFloorTom
+_track |>__string(_) _pos |> __int32(_) _sound |> floorTom
+---
+setSound(_track, _pos ,_sound), _sig -> __user(setSound, _track, _pos, _sound), _sig
+
+-setSoundCrash
+_track |>__string(_) _pos |> __int32(_) _sound |> crash
+---
+setSound(_track, _pos ,_sound), _sig -> __user(setSound, _track, _pos, _sound), _sig
+
+-setSoundRide
+_track |>__string(_) _pos |> __int32(_) _sound |> ride
+---
+setSound(_track, _pos ,_sound), _sig -> __user(setSound, _track, _pos, _sound), _sig
+
+-setSoundOpenHiHatOpen
+_track |>__string(_) _pos |> __int32(_) _sound |> hiHatOpen
+---
+setSound(_track, _pos ,_sound), _sig -> __user(setSound, _track, _pos, _sound), _sig
+
+-setSoundhiHatClosed
+_track |>__string(_) _pos |> __int32(_) _sound |> hiHatClosed
+---
+setSound(_track, _pos ,_sound), _sig -> __user(setSound, _track, _pos, _sound), _sig
+
+-setSoundhiHatPedal
+_track |>__string(_) _pos |> __int32(_) _sound |> hiHatPedal
+---
+setSound(_track, _pos ,_sound), _sig -> __user(setSound, _track, _pos, _sound), _sig
+
+-setSoundResolveSound
+_track |> __string(_) _pos |> __int32(_) _E, _sig -> _I, _sigP
+---
+setSound(_track, _pos, _E), _sig -> setSound(_track, _pos, _I), _sigP
+
+-setSoundResolvePos
+_track |> __string(_) _E, _sig -> _I, _sigP
+---
+setSound(_track, _E, _x), _sig -> setSound(_track, _I, _x), _sigP
+
+-setSoundResolveTrack
+_E, _sig -> _I, _sigP 
+---
+setSound(_E, _x, _y), _sig -> setSound(_I, _x, _y), _sigP
+
+-setSoundDerefTrack
+---
+setSound(_track, _x, _y), _sig -> setSound(deref(_track), _x, _y), _sig
+
+-runTrack
+_track |> __string(_)
+---
+runTrack(_track), _sig -> __user(runTrack, _track), _sig
+
+-runTrackResolve
+_E, _sig -> _s, _sigP
+---
+runTrack(_E), _sig -> runTrack(_s), _sigP
+
+-runTrackDeref
+---
+runTrack(_track), _sig -> runTrack(deref(_track)), _sig

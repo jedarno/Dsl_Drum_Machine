@@ -1,0 +1,14 @@
+make_track track01 {"track01"} 
+ 
+for (i = 0; i < 16; i = i + 2;) {
+  set_sound track01[i] hi_hat_closed;
+}
+set_sound track01[0] bass; 
+set_sound track01[2] snare; 
+set_sound track01[5] bass; 
+set_sound track01[8] snare; 
+set_sound track01[12] tom1; 
+set_sound track01[14] crash; 
+set_sound track01[14] bass; 
+ 
+play_track track01; 

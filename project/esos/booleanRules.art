@@ -1,0 +1,54 @@
+-and
+_Bool1 |> __boolean(_) _Bool2 |> __boolean(_)
+---
+AND(_Bool1, _Bool2), _sig -> __and(_Bool1, _Bool2), _sig
+
+-andRight
+_Bool |> __boolean(_) _ERight, _sig -> _BoolRight, _sigP
+---
+AND(_Bool, _ERight), _sig -> AND(_Bool, _BoolRight), _sigP
+
+-andLeft
+_ERightLeft, _sig -> _ILeft, _sigP
+---
+AND(_ELeft, _ERight), _sig -> AND(_ILeft, _ERight), _sigP
+
+-or
+_Bool1 |> __boolean(_) _Bool2 |> __boolean(_)
+---
+OR(_Bool1, _Bool2), _sig -> __or(_Bool1, _Bool2), _sig
+
+-orRight
+_Bool |> __boolean(_) _ERight, _sig -> _BoolRight, _sigP
+---
+OR(_Bool, _ERight), _sig -> OR(_Bool, _BoolRight), _sigP
+
+-orLeft
+_ELeft, _sig -> _ILeft, _sigP
+---
+OR(_ELeft, _ERight), _sig -> OR(_ILeft, _ERight), _sigP
+
+-not
+_Bool |> __boolean(_)
+---
+NOT(_Bool), _sig -> __not(_Bool), _sig
+
+-notResolve
+_ERight, _sig -> _I, _sigP
+---
+NOT(_ERight), _sig -> NOT(_I), _sigP
+
+-xor
+_Bool1 |> __boolean(_) _Bool2 |> __boolean(_)
+---
+XOR(_Bool1, _Bool2), _sig -> __xor(_Bool1, _Bool2), _sig
+
+-xorRight
+_Bool |> __boolean(_) _ERight, _sig -> _BoolRight, _sigP
+---
+XOR(_Bool, _ERight), _sig -> XOR(_Bool, _BoolRight), _sigP
+
+-xorLeft
+_ELeft, _sig -> _ILeft, _sigP
+---
+XOR(_ELeft, _ERight), _sig -> XOR(_ILeft, _ERight), _sigP

@@ -1,0 +1,13 @@
+set_bpm 115;
+
+make_track track01{"track01"}
+
+for(i = 1; i < 50; i = i + 16;) {
+  set_sound track01[i] bass;
+  set_sound track01[i + 4] snare;
+  set_sound track01[i + 8] bass;
+  set_sound track01[i + 10] bass;
+  set_sound track01[i + 14] snare;
+}
+
+play_track track01;

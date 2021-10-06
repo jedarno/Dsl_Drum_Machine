@@ -1,0 +1,6 @@
+-print
+_s |> __string(_)
+---
+print(_s), _sig -> __user("print",_s), _sig
+
+

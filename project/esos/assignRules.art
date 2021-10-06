@@ -1,0 +1,36 @@
+-assignInt
+_n |> __int32(_)   
+---
+assign(_name, _n), _sig -> __done, __put(_sig, _name, _n)
+
+-assignReal
+_n |> __real64(_)
+---
+assign(_name, _n), _sig -> __done, __put(_sig, _name, _n)
+
+-assignString
+_s |> __string(_)
+---
+assign(_name, _s), _sig -> __done, __put(_sig, _name, _s)
+
+-assignBool
+_b |> __boolean(_)
+---
+assign(_name, _b), _sig -> __done, __put(_sig, _name, _b)
+
+-assignArray
+__termRoot(_a) |> __flexArray
+---
+assign(_name, _a), _sig -> __done, __put(_sig, _name, _a)
+
+-assignResolve
+_E, _sig -> _I, _sigP 
+---
+assign(_name,_E), _sig -> assign(_name, _I), _sigP
+
+-variable
+__get(_sig, _R) |> _Z
+---
+deref(_R),_sig -> _Z, _sig
+
+

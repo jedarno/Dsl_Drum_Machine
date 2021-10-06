@@ -1,0 +1,38 @@
+-sequenceDone
+---
+seq(__done, _C), _sig -> _C, _sig
+
+-sequence 
+_C1, _sig -> _C1P, _sigP
+---
+seq(_C1, _C2), _sig -> seq(_C1P, _C2), _sigP
+
+-ifTrue 
+---
+if(True, _C1, _C2),_sig -> _C1, _sig
+
+-ifFalse 
+---
+if(False, _C1, _C2),_sig -> _C2,_sig
+
+-ifResolve
+_E, _sig ->_EP, _sigP
+---
+if(_E,_C1,_C2),_sig -> if(_EP, _C1, _C2), _sigP
+
+-while
+---
+while(_E, _C),_sig -> if(_E, seq(_C, while(_E,_C)), __done), _sig
+
+-for
+_v |> assign(_,__int32(_)) 
+---
+for(_v, _E, _i, _C), _sig -> seq(_v, while(_E, seq(_C, _i))), _sig
+
+-subroutine
+---
+func(_name, _S), _sig -> __done, __put(_sig, _name, _S)
+
+-runSubroutine
+---
+execute(_func), _sig -> deref(_func), _sig

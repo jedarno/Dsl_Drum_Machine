@@ -1,0 +1,55 @@
+set_bpm 120;
+
+make_track track01{"track01"}
+
+drum_volume(crash, 150);
+drum_volume(ride, 200);
+drum_duration(snare, 3); 
+
+num_of_ticks = 80;
+
+for(i = 0; i<num_of_ticks; i = i + 2;) {
+  set_sound track01[i] hi_hat_closed;
+}
+
+for(i = 12; i<num_of_ticks; i = i + 12;) {
+  set_sound track01[i] ride;
+} 
+for(i = 0; i < num_of_ticks; i = i + 16;) {
+  set_sound track01[i] bass;
+  set_sound track01[i + 4] snare;
+  set_sound track01[i + 8] bass;
+  set_sound track01[i + 10] snare;
+  set_sound track01[i + 14] bass;
+}
+
+set_sound track01[num_of_ticks] crash;
+set_sound track01[num_of_ticks] bass;
+
+make_track track02{"track02"}
+
+for(i = 0; i < num_of_ticks; i = i + 4;) {
+  set_sound track02[i] ride;
+} 
+
+for(i = 0; i < num_of_ticks; i = i + 16;) {
+  set_sound track02[i] bass;
+  set_sound track02[i + 5] snare;
+  set_sound track02[i + 8] bass;
+  set_sound track02[i + 12] snare;
+  set_sound track02[i + 14] snare;
+}
+
+make_track interlude{"track03"}
+for(i = 0; i < 32; i = i + 4;) {
+  set_sound interlude[i] ride;
+}
+
+song mySong {
+  play_track track01;
+  play_track interlude;
+  play_track track02;
+  play_track interlude;
+}
+
+perform mySong;

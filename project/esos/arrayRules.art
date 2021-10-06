@@ -1,0 +1,35 @@
+-appendArrayArray
+__termRoot(_a1) |> __flexArray __termRoot(_a2) |> __flexArray
+---
+add(_a1, _a2), _sig -> __append(_a1, _a2), _sig
+
+-appendArrayElement
+__termRoot(_a) |> __flexArray 
+---
+add(_a, _x), _sig -> add(_a, __flexArray(_x)), _sig
+
+-getArrayElement
+__termRoot(_a) |> __flexArray _i |> __int32(_)
+---
+get(_a, _i), _sig -> __get(_a, _i), _sig
+
+-getArrayElementRight
+__termRoot(_a) |> __flexArray _E, _sig -> _I, _sigP
+---
+get(_a, _E), _sig -> get(_a, _I), _sigP
+
+-getArrayElementLeft
+_E, _sig -> _I, _sigP
+---
+get(_E, _x), _sig -> get(_I, _x), _sigP
+
+-getArraySize
+__termRoot(_a) |> __flexArray 
+---
+len(_a), _sig -> __size(_a), _sig
+
+-getArraySizeResolve
+_E, _sig -> _I, _sigP
+---
+len(_E), _sig -> len(_I), _sigP
+

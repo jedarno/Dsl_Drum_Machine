@@ -1,0 +1,19 @@
+-castReal
+_n |> __int32(_) 
+---
+castReal(_n), _sig -> __user(castReal, _n), _sig
+
+-castRealResolve
+_E1, _sig -> _I1, _sigP
+---
+castReal(_E1), _sig -> castReal(_I1), _sigP
+
+-castInt 
+_n |> __real64(_)
+---
+castInt(_n), _sig -> __user(castInt, _n), _sig
+
+-castIntResolve
+_E1, _sig -> _I1, _sigP
+---
+castInt(_E1), _sig -> castInt(_I1), _sigP
