@@ -1,5 +1,3 @@
-This directory contains my submission for the cs3480 assignment
-
 Inside project is a file called esos.art. This contains the re write rules.
 Inside the sos folder are the same rules divided into different files.
 
